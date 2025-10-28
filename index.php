@@ -44,6 +44,19 @@
         </div>
     </section>
 
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-box">
+                <form method="GET" action="" class="search-form">
+                    <input type="text" name="search" placeholder="Search jobs by title, company, or keyword..."
+                        class="search-input">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 Peoplez Careers. All rights reserved.</p>
