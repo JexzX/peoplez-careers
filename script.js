@@ -2,6 +2,13 @@
 function initializeJobFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const jobCards = document.querySelectorAll('.job-card');
+    const jobCountElement = document.querySelector('.job-count');
+    
+    function updateJobCount(visibleCount) {
+        if (jobCountElement) {
+            jobCountElement.textContent = `(${visibleCount} jobs)`;
+        }
+    }
     
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -11,6 +18,7 @@ function initializeJobFilters() {
             this.classList.add('active');
             
             const filterValue = this.getAttribute('data-filter');
+            let visibleCount = 0;
             
             // Filter job cards
             jobCards.forEach(card => {
@@ -22,6 +30,7 @@ function initializeJobFilters() {
                         card.style.opacity = '1';
                         card.style.transform = 'scale(1)';
                     }, 50);
+                    visibleCount++;
                 } else {
                     card.style.opacity = '0';
                     card.style.transform = 'scale(0.8)';
@@ -30,8 +39,14 @@ function initializeJobFilters() {
                     }, 300);
                 }
             });
+            
+            // Update job counter
+            updateJobCount(visibleCount);
         });
     });
+    
+    // Initialize with total count
+    updateJobCount(jobCards.length);
 }
 
 // Initialize filters when DOM is loaded

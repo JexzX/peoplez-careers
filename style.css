@@ -357,3 +357,11 @@ body {
     color: white;
     border-color: #2563eb;
 }
+
+/* Job Counter Styles */
+.job-count {
+    font-size: 1rem;
+    color: #64748b;
+    font-weight: normal;
+    margin-left: 0.5rem;
+}
