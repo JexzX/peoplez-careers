@@ -262,3 +262,60 @@ body {
     text-align: center;
     color: #94a3b8;
 }
+
+/* Search Results Styles */
+.search-results-info {
+    background: #f8fafc;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0 2rem 0;
+    border-left: 4px solid #2563eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-results-info p {
+    margin: 0;
+    color: #475569;
+    flex: 1;
+}
+
+.clear-search {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border: 1px solid #2563eb;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.clear-search:hover {
+    background: #2563eb;
+    color: white;
+}
+
+/* No Results Message */
+.no-results {
+    text-align: center;
+    padding: 3rem;
+    color: #64748b;
+    grid-column: 1 / -1;
+}
+
+.no-results h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #475569;
+}
+
+.no-results a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.no-results a:hover {
+    text-decoration: underline;
+}
