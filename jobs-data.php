@@ -1,5 +1,4 @@
 <?php
-
 // Search functionality
 $search_keyword = '';
 if (isset($_GET['search']) && !empty($_GET['search'])) {
@@ -17,7 +16,7 @@ $all_jobs = [
         'salary' => '₩50,000,000 - ₩70,000,000',
         'description' => 'We are looking for a skilled Frontend Developer to join our web development team.',
         'tags' => ['React', 'JavaScript', 'CSS', 'Vue'],
-        'posted_date' => '2024-01-15'
+        'posted_date' => '2024-01-28'  // Updated to recent date
     ],
     [
         'id' => 2,
@@ -28,7 +27,7 @@ $all_jobs = [
         'salary' => '₩45,000,000 - ₩60,000,000',
         'description' => 'Join our design team to create amazing user experiences for millions of users.',
         'tags' => ['Figma', 'UI/UX', 'Prototyping', 'User Research'],
-        'posted_date' => '2024-01-14'
+        'posted_date' => '2024-01-29'  // Updated to recent date
     ],
     [
         'id' => 3,
@@ -39,7 +38,7 @@ $all_jobs = [
         'salary' => '₩60,000,000 - ₩80,000,000',
         'description' => 'Looking for backend engineers to build scalable e-commerce solutions.',
         'tags' => ['Node.js', 'Python', 'AWS', 'MySQL'],
-        'posted_date' => '2024-01-13'
+        'posted_date' => '2024-01-27'  // Updated to recent date
     ],
     [
         'id' => 4,
@@ -50,7 +49,7 @@ $all_jobs = [
         'salary' => '₩65,000,000 - ₩85,000,000',
         'description' => 'Join our AI research team to work on cutting-edge machine learning projects.',
         'tags' => ['Python', 'Machine Learning', 'TensorFlow', 'Data Analysis'],
-        'posted_date' => '2024-01-12'
+        'posted_date' => '2024-01-20'  // Older date (no NEW badge)
     ],
     [
         'id' => 5,
@@ -61,7 +60,7 @@ $all_jobs = [
         'salary' => '₩70,000,000 - ₩90,000,000',
         'description' => 'Lead product development for innovative consumer electronics.',
         'tags' => ['Product Strategy', 'Agile', 'Market Research', 'Team Leadership'],
-        'posted_date' => '2024-01-11'
+        'posted_date' => '2024-01-18'  // Older date (no NEW badge)
     ]
 ];
 
