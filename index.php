@@ -62,6 +62,7 @@
             <p>&copy; 2024 Peoplez Careers. All rights reserved.</p>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
