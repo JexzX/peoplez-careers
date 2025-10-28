@@ -121,3 +121,31 @@ body {
     font-weight: bold;
     margin-top: 0.5rem;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero h2 {
+        font-size: 2rem;
+    }
+    
+    .jobs-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .job-card {
+        padding: 1rem;
+    }
+    
+    .header {
+        padding: 0.8rem 0;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+}
