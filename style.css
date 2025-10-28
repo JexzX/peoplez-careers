@@ -196,3 +196,27 @@ body {
 .search-btn:hover {
     background: #1d4ed8;
 }
+
+/* Job Tags Styles */
+.job-tags {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background: #f1f5f9;
+    color: #475569;
+    padding: 0.3rem 0.6rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid #e2e8f0;
+}
+
+.tag:hover {
+    background: #2563eb;
+    color: white;
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}

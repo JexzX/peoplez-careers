@@ -38,6 +38,11 @@
                     <p class="location">📍 <?php echo $job['location']; ?></p>
                     <p class="salary">💼 <?php echo $job['salary']; ?></p>
                     <span class="job-type"><?php echo $job['type']; ?></span>
+                    <div class="job-tags">
+                        <?php foreach ($job['tags'] as $tag): ?>
+                        <span class="tag"><?php echo $tag; ?></span>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
                 <?php endforeach; ?>
             </div>
