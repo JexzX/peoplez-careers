@@ -65,7 +65,8 @@
     <!-- Job Listings Section -->
     <section class="job-listings">
         <div class="container">
-            <h2 class="section-title">Available Positions</h2>
+            <h2 class="section-title">Available Positions <span class="job-count">(<?php echo count($jobs); ?>
+                    jobs)</span></h2>
             <div class="jobs-grid">
                 <?php if (count($jobs) > 0): ?>
                 <?php foreach ($jobs as $job): ?>
