@@ -64,7 +64,28 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Peoplez Careers. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Peoplez Careers</h3>
+                    <p>Connecting talented professionals with amazing Korean companies since 2024.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#">Home</a>
+                    <a href="#">Browse Jobs</a>
+                    <a href="#">For Employers</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>📍 Seoul, South Korea</p>
+                    <p>📧 hello@peoplezcareers.com</p>
+                    <p>📞 +82 2-123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Peoplez Careers. All rights reserved. | Built with 💙 in Seoul</p>
+            </div>
         </div>
     </footer>
     <script src="script.js"></script>
