@@ -39,6 +39,17 @@
         </div>
     </section>
 
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button type="button" class="filter-btn active" data-filter="all">All Jobs</button>
+                <button type="button" class="filter-btn" data-filter="Full-time">Full-time</button>
+                <button type="button" class="filter-btn" data-filter="Remote">Remote</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Search Results Info -->
     <div class="container">
         <?php include 'jobs-data.php'; ?>
