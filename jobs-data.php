@@ -1,4 +1,11 @@
 <?php
+
+// Search functionality
+$search_keyword = '';
+if (isset($_GET['search']) && !empty($_GET['search'])) {
+    $search_keyword = strtolower(trim($_GET['search']));
+}
+
 // Sample jobs data - Korean companies
 $jobs = [
     [
