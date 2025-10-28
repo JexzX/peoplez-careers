@@ -1,6 +1,44 @@
-// Basic interactive features for Peoplez Careers
+// Job Filter Functionality
+function initializeJobFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const jobCards = document.querySelectorAll('.job-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            this.classList.add('active');
+            
+            const filterValue = this.getAttribute('data-filter');
+            
+            // Filter job cards
+            jobCards.forEach(card => {
+                const jobType = card.querySelector('.job-type').textContent;
+                
+                if (filterValue === 'all' || jobType === filterValue) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+}
+
+// Initialize filters when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scroll for anchor links
+    initializeJobFilters();
+    
+    // Existing smooth scroll code
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -12,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Job card click effect
+    // Existing job card click effect
     const jobCards = document.querySelectorAll('.job-card');
     jobCards.forEach(card => {
         card.addEventListener('click', function() {
@@ -20,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Search form enhancement
+    // Existing search form enhancement
     const searchForm = document.querySelector('.search-form');
     if (searchForm) {
         searchForm.addEventListener('submit', function(e) {
