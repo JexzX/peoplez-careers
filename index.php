@@ -25,12 +25,38 @@
         </div>
     </main>
 
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-box">
+                <form method="GET" action="" class="search-form">
+                    <input type="text" name="search" placeholder="Search jobs by title, company, or keyword..."
+                        class="search-input"
+                        value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Results Info -->
+    <div class="container">
+        <?php include 'jobs-data.php'; ?>
+        <?php if (!empty($search_keyword)): ?>
+        <div class="search-results-info">
+            <p>Showing <?php echo count($jobs); ?> results for:
+                "<strong><?php echo htmlspecialchars($search_keyword); ?></strong>"</p>
+            <a href="?" class="clear-search">Clear search</a>
+        </div>
+        <?php endif; ?>
+    </div>
+
     <!-- Job Listings Section -->
     <section class="job-listings">
         <div class="container">
             <h2 class="section-title">Available Positions</h2>
             <div class="jobs-grid">
-                <?php include 'jobs-data.php'; ?>
+                <?php if (count($jobs) > 0): ?>
                 <?php foreach ($jobs as $job): ?>
                 <div class="job-card">
                     <h3 class="job-title"><?php echo $job['title']; ?></h3>
@@ -45,19 +71,12 @@
                     </div>
                 </div>
                 <?php endforeach; ?>
-            </div>
-        </div>
-    </section>
-
-    <!-- Search Section -->
-    <section class="search-section">
-        <div class="container">
-            <div class="search-box">
-                <form method="GET" action="" class="search-form">
-                    <input type="text" name="search" placeholder="Search jobs by title, company, or keyword..."
-                        class="search-input">
-                    <button type="submit" class="search-btn">Search</button>
-                </form>
+                <?php else: ?>
+                <div class="no-results">
+                    <h3>No jobs found</h3>
+                    <p>Try adjusting your search terms or <a href="?" class="clear-search">browse all jobs</a></p>
+                </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
