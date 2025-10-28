@@ -319,3 +319,39 @@ body {
 .no-results a:hover {
     text-decoration: underline;
 }
+
+/* Filter Section Styles */
+.filter-section {
+    background: white;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.6rem 1.2rem;
+    border: 2px solid #e2e8f0;
+    background: white;
+    color: #64748b;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.filter-btn.active {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
