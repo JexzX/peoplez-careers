@@ -71,7 +71,16 @@
                 <?php if (count($jobs) > 0): ?>
                 <?php foreach ($jobs as $job): ?>
                 <div class="job-card">
-                    <h3 class="job-title"><?php echo $job['title']; ?></h3>
+                    <h3 class="job-title"><?php echo $job['title']; ?>
+                        <?php 
+                        // Add "NEW" badge for jobs posted in last 3 days
+                        $postDate = new DateTime($job['posted_date']);
+                        $today = new DateTime();
+                        $interval = $today->diff($postDate)->days;
+                        if ($interval <= 3): ?>
+                        <span class="new-badge">NEW</span>
+                        <?php endif; ?>
+                    </h3>
                     <p class="company"><?php echo $job['company']; ?></p>
                     <p class="location">📍 <?php echo $job['location']; ?></p>
                     <p class="salary">💼 <?php echo $job['salary']; ?></p>

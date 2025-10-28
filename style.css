@@ -365,3 +365,23 @@ body {
     font-weight: normal;
     margin-left: 0.5rem;
 }
+
+/* New Badge Styles */
+.new-badge {
+    background: #dc2626;
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.job-title {
+    font-size: 1.3rem;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
