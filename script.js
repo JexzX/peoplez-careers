@@ -49,9 +49,78 @@ function initializeJobFilters() {
     updateJobCount(jobCards.length);
 }
 
+// Sort Functionality
+function initializeSortFunctionality() {
+    const sortSelect = document.getElementById('sort-select');
+    const jobCardsContainer = document.querySelector('.jobs-grid');
+    
+    if (sortSelect && jobCardsContainer) {
+        sortSelect.addEventListener('change', function() {
+            const sortValue = this.value;
+            const jobCards = Array.from(document.querySelectorAll('.job-card'));
+            
+            // Add fade out animation
+            jobCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+            });
+            
+            // Sort after animation
+            setTimeout(() => {
+                jobCards.sort((a, b) => {
+                    const aTitle = a.querySelector('.job-title').textContent;
+                    const bTitle = b.querySelector('.job-title').textContent;
+                    const aDate = a.querySelector('.new-badge') ? 1 : 0;
+                    const bDate = b.querySelector('.new-badge') ? 1 : 0;
+                    const aSalary = extractSalaryValue(a.querySelector('.salary').textContent);
+                    const bSalary = extractSalaryValue(b.querySelector('.salary').textContent);
+                    
+                    switch(sortValue) {
+                        case 'newest':
+                            return bDate - aDate;
+                        case 'oldest':
+                            return aDate - bDate;
+                        case 'salary_high':
+                            return bSalary - aSalary;
+                        case 'salary_low':
+                            return aSalary - bSalary;
+                        default:
+                            return 0;
+                    }
+                });
+                
+                // Clear container and append sorted cards with animation
+                jobCardsContainer.innerHTML = '';
+                jobCards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    jobCardsContainer.appendChild(card);
+                    
+                    // Staggered fade in animation
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }, 300);
+        });
+    }
+}
+
+// Helper function to extract salary value
+function extractSalaryValue(salaryText) {
+    // Extract first number from salary string (e.g., "₩50,000,000 - ₩70,000,000" -> 50000000)
+    const match = salaryText.match(/₩([\d,]+)/);
+    if (match) {
+        return parseInt(match[1].replace(/,/g, ''), 10);
+    }
+    return 0;
+}
+
 // Initialize filters when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeJobFilters();
+    initializeSortFunctionality();
     
     // Existing smooth scroll code
     const links = document.querySelectorAll('a[href^="#"]');
