@@ -430,3 +430,38 @@ body {
     color: white;
     border-color: #2563eb;
 }
+
+/* Sort Section Styles */
+.sort-section {
+    background: white;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.sort-options {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.sort-options label {
+    font-weight: 600;
+    color: #475569;
+}
+
+.sort-select {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    background: white;
+    color: #475569;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
