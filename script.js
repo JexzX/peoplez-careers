@@ -203,9 +203,14 @@ function initializeModalFunctionality() {
         }
     };
 
-    // Open modal when job card is clicked
+    // Remove ALL existing click events and add modal handler
     jobCards.forEach(card => {
-        card.addEventListener('click', function() {
+        // Remove all event listeners by cloning
+        const newCard = card.cloneNode(true);
+        card.parentNode.replaceChild(newCard, card);
+        
+        // Add modal event listener to the new card
+        newCard.addEventListener('click', function() {
             const jobId = this.getAttribute('data-job-id');
             const jobData = jobDetailsData[jobId];
             
