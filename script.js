@@ -205,14 +205,15 @@ function initializeModalFunctionality() {
 
     // Open modal when job card is clicked
     jobCards.forEach(card => {
-        card.addEventListener('click', function() {
+        card.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent other event listeners
             const jobId = this.getAttribute('data-job-id');
             const jobData = jobDetailsData[jobId];
             
             if (jobData) {
                 displayJobDetails(jobData);
                 modal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                document.body.style.overflow = 'hidden';
             }
         });
     });
@@ -275,15 +276,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (target) {
                 target.scrollIntoView({ behavior: 'smooth' });
             }
-        });
-    });
-    
-    // Remove the old alert click event since we now have modal
-    const jobCards = document.querySelectorAll('.job-card');
-    jobCards.forEach(card => {
-        // Remove the old alert event listener
-        card.removeEventListener('click', function() {
-            alert('Job details feature coming soon! 🚀');
         });
     });
     
