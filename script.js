@@ -12,15 +12,12 @@ function initializeJobFilters() {
     
     filterBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            // Remove active class from all buttons
             filterBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
             this.classList.add('active');
             
             const filterValue = this.getAttribute('data-filter');
             let visibleCount = 0;
             
-            // Filter job cards
             jobCards.forEach(card => {
                 const jobType = card.querySelector('.job-type').textContent;
                 
@@ -40,12 +37,10 @@ function initializeJobFilters() {
                 }
             });
             
-            // Update job counter
             updateJobCount(visibleCount);
         });
     });
     
-    // Initialize with total count
     updateJobCount(jobCards.length);
 }
 
@@ -59,17 +54,13 @@ function initializeSortFunctionality() {
             const sortValue = this.value;
             const jobCards = Array.from(document.querySelectorAll('.job-card'));
             
-            // Add fade out animation
             jobCards.forEach(card => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(20px)';
             });
             
-            // Sort after animation
             setTimeout(() => {
                 jobCards.sort((a, b) => {
-                    const aTitle = a.querySelector('.job-title').textContent;
-                    const bTitle = b.querySelector('.job-title').textContent;
                     const aDate = a.querySelector('.new-badge') ? 1 : 0;
                     const bDate = b.querySelector('.new-badge') ? 1 : 0;
                     const aSalary = extractSalaryValue(a.querySelector('.salary').textContent);
@@ -89,14 +80,12 @@ function initializeSortFunctionality() {
                     }
                 });
                 
-                // Clear container and append sorted cards with animation
                 jobCardsContainer.innerHTML = '';
                 jobCards.forEach((card, index) => {
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(20px)';
                     jobCardsContainer.appendChild(card);
                     
-                    // Staggered fade in animation
                     setTimeout(() => {
                         card.style.opacity = '1';
                         card.style.transform = 'translateY(0)';
@@ -109,7 +98,6 @@ function initializeSortFunctionality() {
 
 // Helper function to extract salary value
 function extractSalaryValue(salaryText) {
-    // Extract first number from salary string (e.g., "₩50,000,000 - ₩70,000,000" -> 50000000)
     const match = salaryText.match(/₩([\d,]+)/);
     if (match) {
         return parseInt(match[1].replace(/,/g, ''), 10);
@@ -124,7 +112,6 @@ function initializeModalFunctionality() {
     const modalJobDetails = document.getElementById('modalJobDetails');
     const jobCards = document.querySelectorAll('.job-card');
 
-    // Job data for modal
     const jobDetailsData = {
         1: {
             title: "Frontend Developer",
@@ -203,75 +190,64 @@ function initializeModalFunctionality() {
         }
     };
 
-    // Remove ALL existing click events and add modal handler
+    // Add click event to job cards for modal
     jobCards.forEach(card => {
-        // Remove all event listeners by cloning
-        const newCard = card.cloneNode(true);
-        card.parentNode.replaceChild(newCard, card);
-        
-        // Add modal event listener to the new card
-        newCard.addEventListener('click', function() {
+        card.addEventListener('click', function() {
             const jobId = this.getAttribute('data-job-id');
             const jobData = jobDetailsData[jobId];
             
             if (jobData) {
-                displayJobDetails(jobData);
+                modalJobDetails.innerHTML = `
+                    <h2 class="modal-job-title">${jobData.title}</h2>
+                    <p class="modal-company">${jobData.company}</p>
+                    
+                    <div class="modal-detail"><strong>📍 Location:</strong> ${jobData.location}</div>
+                    <div class="modal-detail"><strong>💼 Type:</strong> ${jobData.type}</div>
+                    <div class="modal-detail"><strong>💰 Salary:</strong> ${jobData.salary}</div>
+                    
+                    <div class="modal-description">
+                        <h3>Job Description</h3>
+                        <p>${jobData.description}</p>
+                    </div>
+                    
+                    <div class="modal-description">
+                        <h3>Requirements</h3>
+                        <ul>
+                            ${jobData.requirements.map(req => `<li>${req}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-tags">
+                        ${jobData.tags.map(tag => `<span class="modal-tag">${tag}</span>`).join('')}
+                    </div>
+                `;
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             }
         });
     });
 
-    // Close modal when X is clicked
+    // Close modal functionality
     closeModal.addEventListener('click', function() {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
     });
 
-    // Close modal when clicking outside
     window.addEventListener('click', function(event) {
         if (event.target === modal) {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
     });
-
-    // Display job details in modal
-    function displayJobDetails(jobData) {
-        modalJobDetails.innerHTML = `
-            <h2 class="modal-job-title">${jobData.title}</h2>
-            <p class="modal-company">${jobData.company}</p>
-            
-            <div class="modal-detail"><strong>📍 Location:</strong> ${jobData.location}</div>
-            <div class="modal-detail"><strong>💼 Type:</strong> ${jobData.type}</div>
-            <div class="modal-detail"><strong>💰 Salary:</strong> ${jobData.salary}</div>
-            
-            <div class="modal-description">
-                <h3>Job Description</h3>
-                <p>${jobData.description}</p>
-            </div>
-            
-            <div class="modal-description">
-                <h3>Requirements</h3>
-                <ul>
-                    ${jobData.requirements.map(req => `<li>${req}</li>`).join('')}
-                </ul>
-            </div>
-            
-            <div class="modal-tags">
-                ${jobData.tags.map(tag => `<span class="modal-tag">${tag}</span>`).join('')}
-            </div>
-        `;
-    }
 }
 
-// Initialize all functionality when DOM is loaded
+// Initialize everything
 document.addEventListener('DOMContentLoaded', function() {
     initializeJobFilters();
     initializeSortFunctionality();
     initializeModalFunctionality();
     
-    // Smooth scroll for anchor links
+    // Smooth scroll
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(link => {
         link.addEventListener('click', function(e) {
