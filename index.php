@@ -68,8 +68,8 @@
             <h2 class="section-title">Available Positions <span class="job-count">(<?php echo count($jobs); ?>
                     jobs)</span></h2>
             <div class="jobs-grid">
-                <?php if (count($jobs) > 0): ?>
-                <?php foreach ($jobs as $job): ?>
+                <?php if (count($paginated_jobs) > 0): ?>
+                <?php foreach ($paginated_jobs as $job): ?>
                 <div class="job-card">
                     <h3 class="job-title"><?php echo $job['title']; ?>
                         <?php 
