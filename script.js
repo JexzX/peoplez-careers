@@ -124,7 +124,7 @@ function initializeModalFunctionality() {
     const modalJobDetails = document.getElementById('modalJobDetails');
     const jobCards = document.querySelectorAll('.job-card');
 
-    // Job data for modal (you can expand this with more details)
+    // Job data for modal
     const jobDetailsData = {
         1: {
             title: "Frontend Developer",
@@ -205,8 +205,7 @@ function initializeModalFunctionality() {
 
     // Open modal when job card is clicked
     jobCards.forEach(card => {
-        card.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent other event listeners
+        card.addEventListener('click', function() {
             const jobId = this.getAttribute('data-job-id');
             const jobData = jobDetailsData[jobId];
             
@@ -261,13 +260,13 @@ function initializeModalFunctionality() {
     }
 }
 
-// Initialize filters when DOM is loaded
+// Initialize all functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeJobFilters();
     initializeSortFunctionality();
     initializeModalFunctionality();
     
-    // Existing smooth scroll code
+    // Smooth scroll for anchor links
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -279,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Existing search form enhancement
+    // Search form validation
     const searchForm = document.querySelector('.search-form');
     if (searchForm) {
         searchForm.addEventListener('submit', function(e) {
