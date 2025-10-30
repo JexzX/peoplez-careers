@@ -85,7 +85,7 @@
             <div class="jobs-grid">
                 <?php if (count($paginated_jobs) > 0): ?>
                 <?php foreach ($paginated_jobs as $job): ?>
-                <div class="job-card">
+                <div class="job-card" data-job-id="<?php echo $job['id']; ?>">
                     <h3 class="job-title"><?php echo $job['title']; ?>
                         <?php 
                         // Add "NEW" badge for jobs posted in last 3 days
@@ -140,6 +140,16 @@
             <?php endif; ?>
         </div>
     </section>
+
+    <!-- Job Details Modal -->
+    <div id="jobModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalJobDetails">
+                <!-- Job details will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">
