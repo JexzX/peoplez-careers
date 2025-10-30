@@ -50,6 +50,21 @@
         </div>
     </section>
 
+    <!-- Sort Section -->
+    <section class="sort-section">
+        <div class="container">
+            <div class="sort-options">
+                <label for="sort-select">Sort by:</label>
+                <select id="sort-select" name="sort" class="sort-select">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="salary_high">Salary: High to Low</option>
+                    <option value="salary_low">Salary: Low to High</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
     <!-- Search Results Info -->
     <div class="container">
         <?php include 'jobs-data.php'; ?>
