@@ -82,4 +82,12 @@ if (!empty($search_keyword)) {
         return $search_in_title || $search_in_company || $search_in_tags;
     });
 }
+
+// Pagination functionality
+$jobs_per_page = 3;
+$current_page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$total_jobs = count($jobs);
+$total_pages = ceil($total_jobs / $jobs_per_page);
+$start_index = ($current_page - 1) * $jobs_per_page;
+$paginated_jobs = array_slice($jobs, $start_index, $jobs_per_page);
 ?>
