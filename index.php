@@ -99,6 +99,30 @@
                 </div>
                 <?php endif; ?>
             </div>
+
+            <!-- Pagination Controls -->
+            <?php if ($total_pages > 1): ?>
+            <div class="pagination">
+                <?php if ($current_page > 1): ?>
+                <a href="?<?php echo http_build_query(array_merge($_GET, ['page' => $current_page - 1])); ?>"
+                    class="pagination-btn">Previous</a>
+                <?php endif; ?>
+
+                <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                <?php if ($i == $current_page): ?>
+                <span class="pagination-page active"><?php echo $i; ?></span>
+                <?php else: ?>
+                <a href="?<?php echo http_build_query(array_merge($_GET, ['page' => $i])); ?>"
+                    class="pagination-page"><?php echo $i; ?></a>
+                <?php endif; ?>
+                <?php endfor; ?>
+
+                <?php if ($current_page < $total_pages): ?>
+                <a href="?<?php echo http_build_query(array_merge($_GET, ['page' => $current_page + 1])); ?>"
+                    class="pagination-btn">Next</a>
+                <?php endif; ?>
+            </div>
+            <?php endif; ?>
         </div>
     </section>
 
